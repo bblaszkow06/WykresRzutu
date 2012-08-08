@@ -13,10 +13,21 @@ public:
     HorizontalThrow(Length scope, Time time, double grav = GravAcc::NORM);
     HorizontalThrow(Time time, Velocity vel, double grav = GravAcc::NORM);
 
+    double getHeight();
+    double getVelocity();
+    double getScope();
+    double getTime();
+    double getGravAcc();
+
     double getY(double x);
     QPointF getPoint(Time time);
 
 private:
+    void calcH() { h = g*t*t/2; }
+    void calcV() { v = s/t; }
+    void calcS() { s = v*t; }
+    void calcT() { t = pow(2*h/g); }
+
     double h;
     double v;
     double s;
