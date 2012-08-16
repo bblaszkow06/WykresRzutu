@@ -2,31 +2,31 @@
 #define HORIZONTALTHROW_H
 
 #include <qmath.h>
-#include "units.h"
+#include "F:\CPP\Fizyka\Jednostki\units.h"
 #include <QPointF>
 
 class HorizontalThrow
 {
 public:
-    HorizontalThrow(Length height, Velocity vel, double grav = GravAcc::NORM);
+    HorizontalThrow(Length height, Speed vel, double grav = GravAcc::NORM);
     HorizontalThrow(Length height, Length scope, double grav = GravAcc::NORM);
     HorizontalThrow(Length scope, Time time, double grav = GravAcc::NORM);
-    HorizontalThrow(Time time, Velocity vel, double grav = GravAcc::NORM);
+    HorizontalThrow(Time time, Speed vel, double grav = GravAcc::NORM);
 
-    double getHeight();
-    double getVelocity();
-    double getScope();
-    double getTime();
-    double getGravAcc();
+    double getHeight(){return h;}
+    double getVelocity(){return v;}
+    double getScope(){return s;}
+    double getTime(){return t;}
+    double getGravAcc(){return g;}
 
     double getY(double x);
-    QPointF getPoint(Time time);
+    QPointF getPoint(double time);
 
 private:
     void calcH() { h = g*t*t/2; }
     void calcV() { v = s/t; }
     void calcS() { s = v*t; }
-    void calcT() { t = pow(2*h/g); }
+    void calcT() { t = sqrt(2*h/g); }
 
     double h;
     double v;

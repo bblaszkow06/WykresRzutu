@@ -26,6 +26,7 @@ private:
     QPen chartPen;
     
     void drawAxes(QPainter * painter);
+    void drawChart(QPainter * painter);
 };
 
 #endif // THROWCHARTWIDGET_H

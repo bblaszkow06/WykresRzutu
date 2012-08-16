@@ -14,7 +14,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     throwchartwidget.cpp \
     horizontalthrow.cpp \
-    ../../CPP/Fizyka/Jednostki/velocity.cpp \
     ../../CPP/Fizyka/Jednostki/time.cpp \
     ../../CPP/Fizyka/Jednostki/speed.cpp \
     ../../CPP/Fizyka/Jednostki/length.cpp \
@@ -23,7 +22,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     throwchartwidget.h \
     horizontalthrow.h \
-    ../../CPP/Fizyka/Jednostki/velocity.h \
     ../../CPP/Fizyka/Jednostki/time.h \
     ../../CPP/Fizyka/Jednostki/speed.h \
     ../../CPP/Fizyka/Jednostki/length.h \

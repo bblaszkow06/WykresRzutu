@@ -1,15 +1,18 @@
 #include "horizontalthrow.h"
+//**************************************************
+//          constructors
+//**************************************************
 
-HorizontalThrow(Length height, Velocity vel, double grav)
+HorizontalThrow::HorizontalThrow(Length height, Speed vel, double grav)
 {
     g = grav;
     h = height.to(Length::M);
-    v = vel.to(Velocity::MS);
+    v = vel.to(Speed::MS);
     calcT();
     calcS();
 }
 
-HorizontalThrow(Length height, Length scope, double grav)
+HorizontalThrow::HorizontalThrow(Length height, Length scope, double grav)
 {
     g = grav;
     h = height.to(Length::M);
@@ -18,7 +21,7 @@ HorizontalThrow(Length height, Length scope, double grav)
     calcV();
 }
 
-HorizontalThrow(Length scope, Time time, double grav)
+HorizontalThrow::HorizontalThrow(Length scope, Time time, double grav)
 {
     g = grav;
     s = scope.to(Length::M);
@@ -27,11 +30,27 @@ HorizontalThrow(Length scope, Time time, double grav)
     calcV();
 }
 
-HorizontalThrow(Time time, Velocity vel, double grav)
+HorizontalThrow::HorizontalThrow(Time time, Speed vel, double grav)
 {
     g = grav;
     t = time.to(Time::S);
-    v = vel.to(Velocity::MS);
+    v = vel.to(Speed::MS);
     calcH();
     calcS();
+}
+
+//**************************************************
+//          getters
+//**************************************************
+
+double HorizontalThrow::getY(double x)
+{
+    return h - (g*x*x)/(2*v*v);
+}
+
+QPointF HorizontalThrow::getPoint(double time)
+{
+    double x = v*time;
+    double y = h-g*time*time/2.0;
+    return QPointF(x,y);
 }

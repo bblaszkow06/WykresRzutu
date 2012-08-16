@@ -22,6 +22,7 @@ void ThrowChartWidget::paintEvent(QPaintEvent * event)
     painter.begin(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    //background
     painter.fillRect(event->rect(), background);
     painter.translate(LRMargin,UDMargin);
 
@@ -55,4 +56,28 @@ void ThrowChartWidget::drawAxes(QPainter * painter)
     painter->drawLine(xLen,yLen,xLen-arrowHeigth,yLen-arrowWidth/2);
 
     painter->restore();
+}
+
+void ThrowChartWidget::drawChart(QPainter * painter)
+{
+    painter->save();
+
+    painter->setPen(chartPen);
+
+    const int PX_PER_M = 4;
+    const int HEIGHT = 20;
+    const int VEL = 15;
+    const int G = 10;
+
+    HorizontalThrow th(Length(HEIGHT),Speed(VEL),G);
+
+    int x = 0;
+    int y = HEIGHT;
+    do
+    {
+       // painter->drawPoint();
+       //x & y
+    } while (y >= 0)
+
+    paiter->restore();
 }
