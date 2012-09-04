@@ -1,0 +1,14 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\throwchartwidget.o
+./debug\horizontalthrow.o
+./debug\time.o
+./debug\speed.o
+./debug\length.o
+./debug\grav_acc.o
+./debug\throwcontrolpanel.o
+./debug\moc_mainwindow.o
+./debug\moc_throwchartwidget.o
+./debug\moc_throwcontrolpanel.o
+);

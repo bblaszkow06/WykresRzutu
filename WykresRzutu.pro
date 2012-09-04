@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     ../../CPP/Fizyka/Jednostki/time.cpp \
     ../../CPP/Fizyka/Jednostki/speed.cpp \
     ../../CPP/Fizyka/Jednostki/length.cpp \
-    ../../CPP/Fizyka/Jednostki/grav_acc.cpp
+    ../../CPP/Fizyka/Jednostki/grav_acc.cpp \
+    throwcontrolpanel.cpp
 
 HEADERS  += mainwindow.h \
     throwchartwidget.h \
@@ -26,4 +27,5 @@ HEADERS  += mainwindow.h \
     ../../CPP/Fizyka/Jednostki/speed.h \
     ../../CPP/Fizyka/Jednostki/length.h \
     ../../CPP/Fizyka/Jednostki/grav_acc.h \
-    ../../CPP/Fizyka/Jednostki/units.h
+    ../../CPP/Fizyka/Jednostki/units.h \
+    throwcontrolpanel.h

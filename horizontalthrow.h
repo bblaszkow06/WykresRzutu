@@ -12,6 +12,7 @@ public:
     HorizontalThrow(Length height, Length scope, double grav = GravAcc::NORM);
     HorizontalThrow(Length scope, Time time, double grav = GravAcc::NORM);
     HorizontalThrow(Time time, Speed vel, double grav = GravAcc::NORM);
+    HorizontalThrow() { h=v=s=t=g=0; }
 
     double getHeight(){return h;}
     double getVelocity(){return v;}

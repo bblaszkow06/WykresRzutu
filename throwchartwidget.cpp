@@ -1,8 +1,11 @@
 #include "throwchartwidget.h"
 
-ThrowChartWidget::ThrowChartWidget(QWidget *parent) :
+ThrowChartWidget::ThrowChartWidget(ThrowControlPanel *thrCP, QWidget *parent) :
     QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
+    tcp = thrCP;
+    newThrow();
+
     background = QBrush(Qt::lightGray, Qt::CrossPattern);
 
     axisPen = QPen(Qt::black);
@@ -14,6 +17,34 @@ ThrowChartWidget::ThrowChartWidget(QWidget *parent) :
     chartPen.setWidth(2);
 
     setMinimumSize(MinSizeX + 2*LRMargin,MinSizeY + 2*UDMargin);
+}
+
+void ThrowChartWidget::newThrow()
+{
+    if (tcp->isHSelected())
+    {
+        if (tcp->isVSelected())
+        {
+            th = HorizontalThrow(Length(tcp->getValueA()),Speed(tcp->getValueB()),tcp->getValueG());
+        }
+        else if (tcp->isSSelected())
+        {
+            th = HorizontalThrow(Length(tcp->getValueA()),Length(tcp->getValueB()),tcp->getValueG());
+        }
+    }
+    else if (tcp->isTSelected())
+    {
+        if (tcp->isVSelected())
+        {
+            th = HorizontalThrow(Time(tcp->getValueA()),Speed(tcp->getValueB()),tcp->getValueG());
+        }
+        else if (tcp->isSSelected())
+        {
+            th = HorizontalThrow(Length(tcp->getValueB()),Time(tcp->getValueA()),tcp->getValueG());
+        }
+    }
+
+    update();
 }
 
 void ThrowChartWidget::paintEvent(QPaintEvent * event)
@@ -28,6 +59,7 @@ void ThrowChartWidget::paintEvent(QPaintEvent * event)
 
     //skalowanie?
     drawAxes(&painter);
+    drawChart(&painter);
 
     //TODO: drawing code here
     painter.end();
@@ -64,20 +96,21 @@ void ThrowChartWidget::drawChart(QPainter * painter)
 
     painter->setPen(chartPen);
 
-    const int PX_PER_M = 4;
-    const int HEIGHT = 20;
-    const int VEL = 15;
-    const int G = 10;
+    const double PX_PER_M = 4.0;
+//    const double HEIGHT = 20.0;
+//    const double VEL = 15.0;
+//    const double G = 10.0;
+//    HorizontalThrow th(Length(HEIGHT),Speed(VEL),G);
 
-    HorizontalThrow th(Length(HEIGHT),Speed(VEL),G);
-
-    int x = 0;
-    int y = HEIGHT;
+    int yLen = this->height()-2*UDMargin;
+    double x = 0;
+    double y = yLen - th.getHeight()*PX_PER_M;
     do
     {
-       // painter->drawPoint();
-       //x & y
-    } while (y >= 0)
+        painter->drawPoint(QPointF(x,y));
+        x++;
+        y = yLen - (th.getY(x/PX_PER_M)*PX_PER_M);
+    } while (y <= yLen);
 
-    paiter->restore();
+    painter->restore();
 }

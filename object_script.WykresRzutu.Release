@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\throwchartwidget.o
+./release\horizontalthrow.o
+./release\time.o
+./release\speed.o
+./release\length.o
+./release\grav_acc.o
+./release\throwcontrolpanel.o
+./release\moc_mainwindow.o
+./release\moc_throwchartwidget.o
+./release\moc_throwcontrolpanel.o
+);

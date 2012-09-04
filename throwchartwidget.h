@@ -4,6 +4,8 @@
 #include <QGLWidget>
 #include <QPainter>
 #include <QPaintEvent>
+#include "horizontalthrow.h"
+#include "throwcontrolpanel.h"
 
 class ThrowChartWidget : public QGLWidget
 {
@@ -14,12 +16,19 @@ public:
     static const int LRMargin = 15;
     static const int UDMargin = 15;
 
-    explicit ThrowChartWidget(QWidget *parent = 0);
+    explicit ThrowChartWidget(ThrowControlPanel * thrCP ,QWidget *parent = 0);
+
+public slots:
+    void newThrow();
 
 protected:
     void paintEvent(QPaintEvent *);
 
 private:
+    HorizontalThrow th;
+
+    ThrowControlPanel * tcp;
+
     QPen axisPen;
     QFont axisLabelFont;
     QBrush background;

@@ -3,6 +3,8 @@
 
 #include <QtGui/QMainWindow>
 
+class QGroupBox;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -10,6 +12,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+
 };
 
 #endif // MAINWINDOW_H
